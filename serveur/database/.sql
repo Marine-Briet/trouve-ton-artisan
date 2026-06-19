@@ -1,3 +1,8 @@
+-- Création de la base de données
+DROP DATABASE IF EXISTS trouve_ton_artisan;
+CREATE DATABASE trouve_ton_artisan;
+USE trouve_ton_artisan;
+
 -- Drop des tables si elles existent déjà (pour éviter les erreurs lors de la création)
 DROP TABLE IF EXISTS artisan;
 DROP TABLE IF EXISTS specialite;
