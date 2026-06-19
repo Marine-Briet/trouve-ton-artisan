@@ -30,6 +30,7 @@ CREATE TABLE artisan (
     a_propos TEXT NOT NULL,
     site_web VARCHAR(255),
     img_URL VARCHAR(255),
+    top_artisan BOOLEAN DEFAULT FALSE,
     id_specialite INT NOT NULL,
     FOREIGN KEY (id_specialite) REFERENCES specialite(id_specialite) ON DELETE RESTRICT
 );
