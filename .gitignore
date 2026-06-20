@@ -11,8 +11,7 @@ logs
 *.log
 npm-debug.log*
 
-# React build
-client/build/
+# React build (Vite)
 client/dist/
 
 # OS files
