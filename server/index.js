@@ -1,6 +1,11 @@
 // On importe le module Express
 const express = require('express');
 
+// On importe les routes
+const categorieRoutes = require('./routes/categorieRoutes');
+const specialiteRoutes = require('./routes/specialiteRoutes');
+const artisanRoutes = require('./routes/artisanRoutes');
+
 // On crée une instance de l'application
 const app = express();
 
@@ -15,11 +20,16 @@ sequelize.authenticate()
     .catch((error) => console.error('❌ Erreur de connexion à la base de données :', error));
 
 
-    
+
 // Route de test, juste pour vérifier que ça fonctionne
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {  
   res.send('Le serveur fonctionne!');
 });
+
+// Routes de l'API
+app.use('/api/categories', categorieRoutes);
+app.use('/api/specialites', specialiteRoutes);
+app.use('/api/artisans', artisanRoutes);
 
 // On démarre le serveur, qui va écouter les requêtes sur le port défini
 app.listen(PORT, () => {
