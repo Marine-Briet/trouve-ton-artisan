@@ -1,10 +1,11 @@
-
-import './App.css'
+import './styles/main.scss'
 
 function App() {
   return (
-  <h1> Hello world</h1>
+    <div>
+      <h1>Hello world</h1>
+    </div>
   )
 }
 
-export default App;
+export default App
