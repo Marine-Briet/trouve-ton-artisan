@@ -6,6 +6,9 @@ const categorieRoutes = require('./routes/categorieRoutes');
 const specialiteRoutes = require('./routes/specialiteRoutes');
 const artisanRoutes = require('./routes/artisanRoutes');
 
+// On importe l'API KEY
+const checkApiKey = require('./middlewares/checkApiKey');
+
 // On crée une instance de l'application
 const app = express();
 
@@ -25,6 +28,9 @@ sequelize.authenticate()
 app.get('/', (req, res) => {  
   res.send('Le serveur fonctionne!');
 });
+
+// Route de l'API Key
+app.use('/api', checkApiKey);
 
 // Routes de l'API
 app.use('/api/categories', categorieRoutes);

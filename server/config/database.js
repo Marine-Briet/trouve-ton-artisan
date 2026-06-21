@@ -12,6 +12,9 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
         dialect: 'mysql',
+        dialectOptions: {
+            charset: 'utf8mb4' // pour supporter les caractères spéciaux ("Bâtiments")
+        },
         logging: false, // false car pollue la console // true pour voir les requêtes SQL
         define: {
             timestamps: false, // false pour ne pas ajouter les colonnes createdAt et updatedAt automatiquement
