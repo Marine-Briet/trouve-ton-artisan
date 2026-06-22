@@ -9,8 +9,17 @@ const artisanRoutes = require('./routes/artisanRoutes');
 // On importe l'API KEY
 const checkApiKey = require('./middlewares/checkApiKey');
 
+// On importe CORS
+const cors = require('cors')
+
 // On crée une instance de l'application
 const app = express();
+
+
+// On autorise cette URL 
+app.use(cors({
+  origin: 'http://localhost:5173',
+}))
 
 // On définit le port sur lequel le serveur va écouter
 const PORT = 3000;
