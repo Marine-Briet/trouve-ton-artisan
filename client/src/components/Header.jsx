@@ -22,7 +22,7 @@ function Header() {
 
       <nav>
         {categories.map((categorie) => (
-          <Link key={categorie.id} to={`/recherche?categorie=${categorie.id}`}>
+          <Link key={categorie.id_categorie} to={`/recherche?categorie=${categorie.id_categorie}`}>
             {categorie.nom}
           </Link>
         ))}
