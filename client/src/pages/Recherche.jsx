@@ -52,40 +52,59 @@ function Recherche() {
   }
 
   return (
-    <div>
-      <h1>Les artisans de ma région</h1>
+    <div className="container py-4">
+      <h1 className="mb-4">Les artisans de ma région</h1>
 
-      <form onSubmit={handleValider}>
-        <input
-          type="text"
-          placeholder="Recherche par nom"
-          value={nomInput}
-          onChange={(e) => setNomInput(e.target.value)}
-        />
+      <form onSubmit={handleValider} className="bg-light p-3 rounded mb-4 row g-3 align-items-end">
+        <div className="col-12 col-md-5">
+          <label htmlFor="nomInput" className="form-label">Recherche par nom</label>
+          <input
+            id="nomInput"
+            type="text"
+            placeholder="Nom de l'artisan"
+            value={nomInput}
+            onChange={(e) => setNomInput(e.target.value)}
+            className="form-control"
+          />
+        </div>
 
-        <select
-          value={categorieInput}
-          onChange={(e) => setCategorieInput(e.target.value)}
-        >
-          <option value="">Sélectionner</option>
-          {categories.map((categorie) => (
-            <option key={categorie.id_categorie} value={categorie.id_categorie}>
-              {categorie.nom}
-            </option>
-          ))}
-        </select>
+        <div className="col-12 col-md-5">
+          <label htmlFor="categorieInput" className="form-label">Recherche par catégorie</label>
+          <select
+            id="categorieInput"
+            value={categorieInput}
+            onChange={(e) => setCategorieInput(e.target.value)}
+            className="form-select"
+          >
+            <option value="">Sélectionner</option>
+            {categories.map((categorie) => (
+              <option key={categorie.id_categorie} value={categorie.id_categorie}>
+                {categorie.nom}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <button type="submit">Valider</button>
+        <div className="col-12 col-md-2">
+          <button type="submit" className="btn btn-primary w-100">Valider</button>
+        </div>
       </form>
 
-      <div>
+      <div className="row g-3">
         {artisans.map((artisan) => (
-          <Link key={artisan.id_artisan} to={`/artisan/${artisan.id_artisan}`}>
-            <h3>{artisan.nom}</h3>
-            <p>{artisan.note}/5</p>
-            <p>{artisan.Specialite?.nom}</p>
-            <p>{artisan.ville}</p>
-          </Link>
+          <div key={artisan.id_artisan} className="col-12 col-md-6 col-lg-4">
+            <Link
+              to={`/artisan/${artisan.id_artisan}`}
+              className="card h-100 text-decoration-none text-dark shadow-sm"
+            >
+              <div className="card-body">
+                <h3 className="card-title h5">{artisan.nom}</h3>
+                <p className="mb-1 text-warning">★ {artisan.note}/5</p>
+                <p className="mb-1">{artisan.Specialite?.nom}</p>
+                <p className="mb-0 text-muted">{artisan.ville}</p>
+              </div>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

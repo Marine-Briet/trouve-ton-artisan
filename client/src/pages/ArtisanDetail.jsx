@@ -20,13 +20,7 @@ function ArtisanDetail() {
     e.preventDefault()
 
     try {
-      await apiPost('/contact', {
-        idArtisan: id,
-        nom,
-        email,
-        objet,
-        message,
-      })
+      await apiPost('/contact', { idArtisan: id, nom, email, objet, message })
       setStatutEnvoi('succes')
       setNom('')
       setEmail('')
@@ -39,67 +33,79 @@ function ArtisanDetail() {
   }
 
   if (!artisan) {
-    return <p>Chargement...</p>
+    return <p className="container py-4">Chargement...</p>
   }
 
   return (
-    <div>
-      <h1>{artisan.nom}</h1>
-      <p>{artisan.Specialite?.nom}</p>
-      <p>{artisan.note}/5</p>
-      <p>{artisan.ville}</p>
+    <div className="container py-4">
+      <div className="row g-4 mb-4">
+        <div className="col-12 col-md-4">
+          <div className="bg-light rounded d-flex align-items-center justify-content-center" style={{ height: '200px' }}>
+            <span className="text-muted">Image à venir</span>
+          </div>
+        </div>
 
-      <h2>À propos</h2>
-      <p>{artisan.a_propos}</p>
+        <div className="col-12 col-md-8">
+          <h1>{artisan.nom}</h1>
+          <p className="text-warning mb-1">★ {artisan.note}/5</p>
+          <p className="mb-1">{artisan.Specialite?.nom}</p>
+          <p className="text-muted">{artisan.ville}</p>
+        </div>
+      </div>
 
-      {artisan.site_web && (
-        <p>
-          Site internet : <a href={artisan.site_web} target="_blank" rel="noopener noreferrer">{artisan.site_web}</a>
-        </p>
-      )}
+      <section className="mb-4">
+        <h2>À propos</h2>
+        <p>{artisan.a_propos}</p>
 
-      <h2>Contact</h2>
-      <form onSubmit={handleContact}>
-        <label htmlFor="nom">Nom *</label>
-        <input
-          id="nom"
-          type="text"
-          required
-          value={nom}
-          onChange={(e) => setNom(e.target.value)}
-        />
+        {artisan.site_web && (
+          <p>
+            Site internet :{' '}
+            <a href={artisan.site_web} target="_blank" rel="noopener noreferrer">
+              {artisan.site_web}
+            </a>
+          </p>
+        )}
+      </section>
 
-        <label htmlFor="email">Email *</label>
-        <input
-          id="email"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <section>
+        <h2 className="mb-3">Contact</h2>
+        <form onSubmit={handleContact} className="row g-3" style={{ maxWidth: '600px' }}>
+          <div className="col-12">
+            <label htmlFor="nom" className="form-label">Nom *</label>
+            <input id="nom" type="text" required value={nom} onChange={(e) => setNom(e.target.value)} className="form-control" />
+          </div>
 
-        <label htmlFor="objet">Objet *</label>
-        <input
-          id="objet"
-          type="text"
-          required
-          value={objet}
-          onChange={(e) => setObjet(e.target.value)}
-        />
+          <div className="col-12">
+            <label htmlFor="email" className="form-label">Email *</label>
+            <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" />
+          </div>
 
-        <label htmlFor="message">Message *</label>
-        <textarea
-          id="message"
-          required
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
+          <div className="col-12">
+            <label htmlFor="objet" className="form-label">Objet *</label>
+            <input id="objet" type="text" required value={objet} onChange={(e) => setObjet(e.target.value)} className="form-control" />
+          </div>
 
-        <button type="submit">Envoyer</button>
-      </form>
+          <div className="col-12">
+            <label htmlFor="message" className="form-label">Message *</label>
+            <textarea id="message" required rows="4" value={message} onChange={(e) => setMessage(e.target.value)} className="form-control" />
+          </div>
 
-      {statutEnvoi === 'succes' && <p>Message envoyé avec succès !</p>}
-      {statutEnvoi === 'erreur' && <p>Une erreur est survenue, veuillez réessayer.</p>}
+          <div className="col-12">
+            <button type="submit" className="btn btn-danger">Envoyer</button>
+          </div>
+
+          {statutEnvoi === 'succes' && (
+            <div className="col-12">
+              <p className="text-success mb-0">Message envoyé avec succès !</p>
+            </div>
+          )}
+          {statutEnvoi === 'erreur' && (
+            <div className="col-12">
+              <p className="text-danger mb-0">Une erreur est survenue, veuillez réessayer.</p>
+            </div>
+          )}
+        </form>
+      </section>
     </div>
   )
 }

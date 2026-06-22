@@ -1,8 +1,8 @@
 function PageLegale({ titre }) {
   return (
-    <div>
-      <h1>{titre}</h1>
-      <p>Page en construction</p>
+    <div className="container py-5 text-center">
+      <h1 className="mb-3">{titre}</h1>
+      <p className="text-muted">Cette page est en construction</p>
     </div>
   )
 }

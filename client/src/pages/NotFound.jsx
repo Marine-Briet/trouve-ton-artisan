@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 
 function NotFound() {
   return (
-    <div>
-      <h1>OUPS !</h1>
-      <p>La page que vous cherchez semble introuvable...</p>
-      <p>Code d'erreur : 404</p>
-      <Link to="/">Revenir à la page d'accueil</Link>
+    <div className="container py-5 text-center">
+      <h1 className="display-4 fw-bold text-primary mb-3">OUPS !</h1>
+      <p className="fs-5">La page que vous cherchez semble introuvable...</p>
+      <p className="text-muted mb-4">Code d'erreur : 404</p>
+      <Link to="/" className="btn btn-primary">
+        Revenir à la page d'accueil
+      </Link>
     </div>
   )
 }
