@@ -28,7 +28,7 @@ function Home() {
       <h2>Les 3 artisans du mois</h2>
       <div>
         {topArtisans.map((artisan) => (
-          <Link key={artisan.id} to={`/artisan/${artisan.id}`}>
+          <Link key={artisan.id_artisan} to={`/artisan/${artisan.id_artisan}`}>
             <h3>{artisan.nom}</h3>
             <p>{artisan.note}/5</p>
             <p>{artisan.Specialite?.nom}</p>
