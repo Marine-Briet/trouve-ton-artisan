@@ -1,5 +1,3 @@
-// Configuration de la base de données avec Sequelize
-
 require('dotenv').config();
 
 const { Sequelize } = require('sequelize');
@@ -13,7 +11,8 @@ const sequelize = new Sequelize(
         port: process.env.DB_PORT,
         dialect: 'mysql',
         dialectOptions: {
-            charset: 'utf8mb4' // pour supporter les caractères spéciaux ("Bâtiments")
+            charset: 'utf8mb4', // pour supporter les caractères spéciaux ("Bâtiments")
+            ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false
         },
         logging: false, // false car pollue la console // true pour voir les requêtes SQL
         define: {

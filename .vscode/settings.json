@@ -14,6 +14,20 @@
             "username": "root",
             "database": "trouve_ton_artisan",
             "askForPassword": true
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "mysql-2c77b79-trouvetonartisan.l.aivencloud.com",
+            "port": 28696,
+            "driver": "MySQL",
+            "name": "aiven-trouve-ton-artisan",
+            "database": "defaultdb",
+            "username": "avnadmin"
         }
     ]
 }
