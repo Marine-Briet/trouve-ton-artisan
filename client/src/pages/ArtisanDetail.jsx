@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { apiFetch, apiPost } from '../utils/api'
 import Breadcrumb from '../components/Breadcrumb'
+import { useSeo } from '../hooks/useSeo'
 
 function ArtisanDetail() {
   const { id } = useParams()
@@ -32,6 +33,11 @@ function ArtisanDetail() {
       setStatutEnvoi('erreur')
     }
   }
+
+  useSeo(
+    artisan ? `${artisan.nom} - Trouve ton artisan !` : 'Trouve ton artisan !',
+    artisan ? `Découvrez ${artisan.nom}, ${artisan.Specialite?.nom} à ${artisan.ville}. Contactez-le directement via le formulaire.` : ''
+  )
 
   if (!artisan) {
     return <p className="container py-4">Chargement...</p>

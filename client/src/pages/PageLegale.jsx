@@ -1,7 +1,10 @@
 import { Construction } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useSeo } from '../hooks/useSeo'
 
 function PageLegale({ titre }) {
+  useSeo(`${titre} - Trouve ton artisan !`, `Page ${titre} du site Trouve ton artisan.`)
+  
   return (
     <div className="container py-5 text-center">
       <Breadcrumb items={[{ label: titre }]} />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { apiFetch } from '../utils/api'
+import { useSeo } from '../hooks/useSeo'
 
 // Hook personnalisé : renvoie le nombre de cards à afficher selon la largeur d'écran
 function useCardsParVue() {
@@ -36,6 +37,8 @@ function Home() {
   const [topArtisans, setTopArtisans] = useState([])
   const [indexDepart, setIndexDepart] = useState(0)
   const cardsParVue = useCardsParVue()
+
+  useSeo('Trouve ton artisan ! - Accueil', 'Trouvez un artisan près de chez vous en région Auvergne-Rhône-Alpes : boulangers, chauffagistes, menuisiers et plus.')
 
   useEffect(() => {
     apiFetch('/artisans/top').then((data) => setTopArtisans(data))

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { apiFetch } from '../utils/api'
 import Breadcrumb from '../components/Breadcrumb'
+import { useSeo } from '../hooks/useSeo'
 
 function Recherche() {
   const [searchParams] = useSearchParams()
@@ -15,6 +16,8 @@ function Recherche() {
 
   const nomUrl = searchParams.get('nom')
   const categorieUrl = searchParams.get('categorie')
+
+  useSeo("Recherche d'artisans - Trouve ton artisan !", 'Recherchez un artisan par nom ou par catégorie en Auvergne-Rhône-Alpes.')
 
   useEffect(() => {
     apiFetch('/categories').then((data) => setCategories(data))

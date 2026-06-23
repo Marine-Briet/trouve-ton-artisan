@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useSeo } from '../hooks/useSeo'
 
 function NotFound() {
+  useSeo('Page non trouvée - Trouve ton artisan !', "Cette page n'existe pas.")
+  
   return (
     <div className="container py-5 text-center">
       <img
