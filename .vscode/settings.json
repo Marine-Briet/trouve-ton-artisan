@@ -27,7 +27,8 @@
             "driver": "MySQL",
             "name": "aiven-trouve-ton-artisan",
             "database": "defaultdb",
-            "username": "avnadmin"
+            "username": "avnadmin",
+            "askForPassword": true
         }
     ]
 }

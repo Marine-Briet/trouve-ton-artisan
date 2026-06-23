@@ -48,6 +48,8 @@ const Artisan = sequelize.define('Artisan', {
             key: 'id_specialite'
         }
     }
+}, {
+    tableName: 'artisan'
 });
 
 module.exports = Artisan;

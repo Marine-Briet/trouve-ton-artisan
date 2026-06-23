@@ -19,6 +19,8 @@ const Specialite = sequelize.define('Specialite', {
             key: 'id_categorie'
         }
     }
+}, {
+    tableName: 'specialite'
 });
 
 module.exports = Specialite;
