@@ -15,7 +15,9 @@ const getAllArtisans = async (req, res) => {
 const getArtisanById = async (req, res) => {
     const { id } = req.params;
     try {
-        const artisan = await Artisan.findByPk(id);
+        const artisan = await Artisan.findByPk(id, {
+            include: { model: Specialite }
+        });
         if (!artisan) {
             return res.status(404).json({ error: 'Artisan non trouvé.' });
         }
@@ -59,8 +61,9 @@ const getArtisansBySearch = async (req, res) => {
 const getTopArtisans = async (req, res) => {
     try {
         const topArtisans = await Artisan.findAll({
-            where: {top_artisan: true},
-            limit: 3
+            where: { top_artisan: true },
+            limit: 3,
+            include: { model: Specialite }
         });
         return res.status(200).json(topArtisans);
     } catch (error) {
