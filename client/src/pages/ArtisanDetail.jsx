@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { apiFetch, apiPost } from '../utils/api'
+import Breadcrumb from '../components/Breadcrumb'
 
 function ArtisanDetail() {
   const { id } = useParams()
@@ -38,6 +39,12 @@ function ArtisanDetail() {
 
   return (
     <div className="container py-4">
+
+      <Breadcrumb items={[
+        { label: 'Recherche', to: '/recherche' },
+        { label: artisan.nom }
+      ]} />
+
       <div className="row g-4 mb-4">
         <div className="col-12 col-md-4">
           <div className="bg-light rounded d-flex align-items-center justify-content-center" style={{ height: '200px' }}>
@@ -45,13 +52,15 @@ function ArtisanDetail() {
           </div>
         </div>
 
-        <div className="col-12 col-md-8">
+        <div className="col-12 col-md-8 ps-md-4">
           <h1>{artisan.nom}</h1>
-          <p className="text-warning mb-1">★ {artisan.note}/5</p>
+          <p className="mb-1" style={{ color: '#e8930a' }}>★ {artisan.note}/5</p>
           <p className="mb-1">{artisan.Specialite?.nom}</p>
           <p className="text-muted">{artisan.ville}</p>
         </div>
       </div>
+
+      <hr style={{ borderTop: '7px solid #cd2c2e', width: '40px', opacity: 1 }} className="mb-4" />
 
       <section className="mb-4">
         <h2>À propos</h2>
@@ -66,6 +75,8 @@ function ArtisanDetail() {
           </p>
         )}
       </section>
+
+      <hr style={{ borderTop: '7px solid #cd2c2e', width: '40px', opacity: 1 }} className="mb-4" />
 
       <section>
         <h2 className="mb-3">Contact</h2>

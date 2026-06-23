@@ -1,8 +1,14 @@
+import { Construction } from 'lucide-react'
+import Breadcrumb from '../components/Breadcrumb'
+
 function PageLegale({ titre }) {
   return (
     <div className="container py-5 text-center">
-      <h1 className="mb-3">{titre}</h1>
-      <p className="text-muted">Cette page est en construction</p>
+      <Breadcrumb items={[{ label: titre }]} />
+
+      <h1 className="mb-4">{titre}</h1>
+      <Construction size={80} color="#384050" className="mb-4" />
+      <p className="fs-3">Cette page est en construction</p>
     </div>
   )
 }

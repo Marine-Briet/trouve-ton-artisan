@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { apiFetch } from '../utils/api'
+import Breadcrumb from '../components/Breadcrumb'
 
 function Recherche() {
   const [searchParams] = useSearchParams()
@@ -52,10 +53,12 @@ function Recherche() {
   }
 
   return (
-    <div className="container py-4">
-      <h1 className="mb-4">Les artisans de ma région</h1>
+    <div className="container py-5">
+      <Breadcrumb items={[{ label: 'Recherche' }]} />
 
-      <form onSubmit={handleValider} className="bg-light p-3 rounded mb-4 row g-3 align-items-end">
+      <h1 className="mb-5">Les artisans de ma région</h1>
+
+      <form onSubmit={handleValider} className="bg-light p-3 rounded mb-5 row g-3 align-items-end">
         <div className="col-12 col-md-5">
           <label htmlFor="nomInput" className="form-label">Recherche par nom</label>
           <input
@@ -93,17 +96,27 @@ function Recherche() {
       <div className="row g-3">
         {artisans.map((artisan) => (
           <div key={artisan.id_artisan} className="col-12 col-md-6 col-lg-4">
-            <Link
-              to={`/artisan/${artisan.id_artisan}`}
-              className="card h-100 text-decoration-none text-dark shadow-sm"
+            <div
+              className="card h-100 shadow-sm"
+              style={{ backgroundColor: '#f1f8fc' }}
             >
-              <div className="card-body">
+              <div className="card-body text-center d-flex flex-column">
                 <h3 className="card-title h5">{artisan.nom}</h3>
-                <p className="mb-1 text-warning">★ {artisan.note}/5</p>
+                <p className="mb-1" style={{ color: '#e8930a' }}>★ {artisan.note}/5</p>
                 <p className="mb-1">{artisan.Specialite?.nom}</p>
-                <p className="mb-0 text-muted">{artisan.ville}</p>
+                <p className="mb-3 text-muted">{artisan.ville}</p>
+
+                <div className="mt-auto">
+                  <Link
+                    to={`/artisan/${artisan.id_artisan}`}
+                    className="btn px-4"
+                    style={{ backgroundColor: '#82b864', color: 'white', border: 'none' }}
+                  >
+                    Plus d'informations
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </div>
           </div>
         ))}
       </div>
