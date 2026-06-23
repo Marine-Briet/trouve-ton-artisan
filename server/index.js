@@ -21,7 +21,7 @@ app.use(express.json());
 
 // On autorise cette URL
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://trouve-ton-artisan-mb.netlify.app'],
 }));
 
 // On définit le port sur lequel le serveur va écouter
