@@ -104,7 +104,7 @@ function Recherche() {
               style={{ backgroundColor: '#f1f8fc' }}
             >
               <div className="card-body text-center d-flex flex-column">
-                <h3 className="card-title h5">{artisan.nom}</h3>
+                <h2 className="card-title h5">{artisan.nom}</h2>
                 <p className="mb-1" style={{ color: '#e8930a' }}>★ {artisan.note}/5</p>
                 <p className="mb-1">{artisan.Specialite?.nom}</p>
                 <p className="mb-3 text-muted">{artisan.ville}</p>
