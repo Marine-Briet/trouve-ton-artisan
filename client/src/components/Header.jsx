@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { apiFetch } from '../utils/api'
 import { Search } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 function Header() {
   const [categories, setCategories] = useState([])
@@ -24,7 +25,7 @@ function Header() {
     <header className="bg-light shadow-sm position-relative">
       <div className="container py-1 d-flex align-items-center justify-content-between">
         <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
-          <img src="/src/assets/logo.png" alt="Trouve ton artisan" style={{ height: '50px', width: 'auto', maxWidth: '100%' }} />
+          <img src={logo} alt="Trouve ton artisan" style={{ height: '50px', width: 'auto' }} />
         </Link>
 
         {/* Boutons mobile/tablette : loupe + burger (jusqu'à xl) */}

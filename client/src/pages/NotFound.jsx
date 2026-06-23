@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useSeo } from '../hooks/useSeo'
+import image404 from '../assets/404.jpg'
 
 function NotFound() {
   useSeo('Page non trouvée - Trouve ton artisan !', "Cette page n'existe pas.")
@@ -7,7 +8,7 @@ function NotFound() {
   return (
     <div className="container py-5 text-center">
       <img
-        src="/src/assets/404.jpg"
+        src={image404}
         alt="Page introuvable"
         style={{ maxWidth: '350px' }}
         className="mb-4"
