@@ -50,7 +50,8 @@ const getArtisansBySearch = async (req, res) => {
                 nom: {
                     [Op.like]: `%${nom}%`
                 }
-            }
+            },
+            include: { model: Specialite }
         });
         return res.status(200).json(artisans);
     } catch (error) {
